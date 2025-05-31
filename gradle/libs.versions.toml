@@ -1,4 +1,8 @@
 [versions]
+firebaseCrashlytics = "19.4.3"
+googleGmsGoogleServices = "4.4.2"
+googleFirebaseCrashlytics = "3.0.3"
+
 agp = "8.5.2"
 kotlin = "1.9.10"
 coreKtx = "1.15.0"
@@ -17,6 +21,8 @@ koin = "3.5.0"
 koin_compose = "4.0.0"
 
 [libraries]
+firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics", version.ref = "firebaseCrashlytics" }
+
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -53,6 +59,9 @@ koin-viewmodel = {module = "io.insert-koin:koin-compose-viewmodel", version.ref 
 
 
 [plugins]
+google-gms-google-services = { id = "com.google.gms.google-services", version.ref ="googleGmsGoogleServices" }
+google-firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref ="googleFirebaseCrashlytics" }
+
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 
