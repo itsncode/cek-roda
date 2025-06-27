@@ -53,7 +53,7 @@ android {
 }
 
 dependencies {
-    implementation("com.google.firebase:firebase-analytics-ktx")
+    
     implementation(libs.firebase.crashlytics)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -66,6 +66,7 @@ dependencies {
 
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
+    implementation("com.google.firebase:firebase-analytics-ktx")
     kapt(libs.androidx.room.compiler)
 
     implementation(libs.viewmodel.compose)
