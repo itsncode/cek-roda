@@ -53,6 +53,7 @@ android {
 }
 
 dependencies {
+    implementation("com.google.firebase:firebase-analytics-ktx")
     implementation(libs.firebase.crashlytics)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
