@@ -12,21 +12,31 @@ import com.cekroda.presentation.route.InspectionRoute
 import com.cekroda.ui.screen.home.HomeScreen
 import com.cekroda.ui.screen.inspection.AddInspectionScreen
 import com.cekroda.ui.screen.splash.SplashScreen
+import com.cekroda.utils.AnalyticsHelper
 
 @Composable
 fun AppNavGraph(navController: NavHostController) {
     NavHost(navController = navController, startDestination = "splash") {
         composable("splash") {
+            AnalyticsHelper.logEvent("splash_screen")
             SplashScreen(navController)
         }
 
         composable("home") {
             HomeRoute(
                 onAddInspectionClick = {
+                    AnalyticsHelper.logEvent("add_inspection")
                     navController.navigate("add-inspection")
                     // TODO: navigasi ke form tambah inspection
                 },
-                onInspectionClick = {
+                onInspectionClick = { inspection ->
+                    AnalyticsHelper.logEvent(
+                        "detail_inspection",
+                        mapOf(
+                            "carType" to inspection.carType,
+                            "status" to inspection.status.name
+                        )
+                    )
                     throw RuntimeException("Test Crash")
                     // TODO: navigasi ke detail inspection
                 }
@@ -35,6 +45,13 @@ fun AppNavGraph(navController: NavHostController) {
 
         composable("add-inspection") {
             InspectionRoute(onAddInspectionOnBoardingClick = { inspection ->
+                AnalyticsHelper.logEvent(
+                    "submit_inspection",
+                    mapOf(
+                        "carType" to inspection.carType,
+                        "status" to inspection.status.name
+                    )
+                )
                 navController.popBackStack()
                 navController.navigate("home")
             })
